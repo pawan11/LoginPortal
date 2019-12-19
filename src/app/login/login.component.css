@@ -1,0 +1,55 @@
+.bgColor{
+    background-color:#e6e6e4;
+}
+
+mat-form-field{
+    width: 80%;
+    padding: 20px;
+}
+    
+.mat-card{
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #c8ced3;
+  border-radius: .25rem;
+}
+
+button{
+    float: inherit; margin-bottom: 10px
+}
+
+
+.mat-card-title{
+    padding: .75rem 1.25rem;
+    padding-top: 0.4rem;
+    padding-right: 1.25rem;
+    padding-bottom: 0.2rem;
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+    background-color:#9e8dbd;
+    border-bottom: 1px solid #c8ced3;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(200, 206, 211);
+    font-size: 17px;
+    width:inherit;
+}
+
+.signup-text{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #7349c0;
+    cursor: pointer;
+}
+

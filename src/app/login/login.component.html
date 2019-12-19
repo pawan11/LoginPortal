@@ -1,0 +1,56 @@
+<mat-toolbar style="height: 40px;" color="primary" > 
+    <span>Customer Portal</span>
+</mat-toolbar>
+<div class="container-fluid bgColor" >
+        <div >
+            <!--Offset-->
+        </div>
+        <div class="row-container">
+            <div class="grid-container">
+                <mat-grid-list cols="1" [rowHeight]="100">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="3" [rowHeight]="380">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-card *ngIf="connectionFlag">
+                            <form [formGroup]="loginForm" autocomplete="off" novalidate  fxLayout="column wrap"
+                                fxLayoutAlign="center">
+                                <mat-card-title align="center">
+                                   Login
+                                </mat-card-title>
+                                <mat-card-content align="center">
+                                    <mat-form-field  align="center">
+                                        <input matInput type="text" placeholder="username" formControlName="username" id="username">
+                                        <mat-hint align="end">Email Id</mat-hint>
+                                        <mat-error *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.pristine">username is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field align="center">
+                                        <input matInput type="password" placeholder="password" formControlName="password" id="password">
+                                        <mat-hint align="end">password</mat-hint>
+                                        <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.pristine">password is required</mat-error>
+                                    </mat-form-field>
+                                </mat-card-content>
+                                <mat-card-actions align="center" >
+                                    <button type="button" mat-raised-button color="warn" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                                    <div class="signup-text" (click)="signup()">Not registered ? signup here</div>
+                                </mat-card-actions>
+                            </form> 
+                        </mat-card> 
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" [rowHeight]="100">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+</div>

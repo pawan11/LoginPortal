@@ -1,0 +1,88 @@
+<mat-toolbar style="height: 40px;" color="primary" > 
+    <span>Customer Portal</span>
+</mat-toolbar>
+<div class="container-fluid bgColor" >
+        <div >
+            <!--Offset-->
+        </div>
+        <div class="row-container">
+            <div class="grid-container">
+                <mat-grid-list cols="1" [rowHeight]="70">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="5" [rowHeight]="440">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <mat-card *ngIf="connectionFlag">
+                            <form [formGroup]="signupForm" autocomplete="off" novalidate  fxLayout="column wrap"
+                                fxLayoutAlign="center">
+                                <mat-card-title align="center">
+                                   Sign Up
+                                </mat-card-title>
+                                <mat-card-content align="center">
+                                    <mat-form-field align="center">
+                                        <input matInput type="text" placeholder="Customer Name" formControlName="custName" id="custName">
+                                        <mat-hint align="end">Customer Name</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.custName.valid && signupForm.controls.custName.pristine">First Name is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field >
+                                        <!--[ngModel]="empReg.itCareerStartDate | date:'yyyy-MM-dd'"-->
+                                        <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" formControlName="dateOfBirth" id="dateOfBirth" 
+                                                 (click)="dateOfBirth.open()">
+                                        <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                                        <mat-datepicker #dateOfBirth></mat-datepicker>
+                                        <mat-hint align="end">Date of birth</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.dateOfBirth.valid && signupForm.controls.dateOfBirth.pristine">Date of birth is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field align="center">
+                                        <input matInput type="number" placeholder="Mobile Number" formControlName="mobileNumber" id="mobileNumber">
+                                        <mat-hint align="end">Mobile Number</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.mobileNumber.valid && signupForm.controls.mobileNumber.pristine">Mobile Number is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field  align="center">
+                                        <input matInput type="email" placeholder="Username" formControlName="username" id="username">
+                                        <mat-hint align="end">Email ID</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.username.valid && signupForm.controls.username.pristine">Username is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field align="center">
+                                        <input matInput  type="password" data-html="true" placeholder="Password" formControlName="password" id="password"
+                                            matTooltip="*The password must contain at least 1 lowercase alphabetical character.
+                                            *The password must contain at least 1 uppercase alphabetical character.
+                                            *The password must contain at least 1 numeric character.
+                                            *The password must contain at least 1 special character(!,@,#,$,%,^,&,*).
+                                            *The password must be 8 characters or longer."
+                                            matTooltipPosition="left">
+                                        <mat-hint align="end">Password</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.pristine">Password is required</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field align="center">
+                                        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" id="confirmPassword"
+                                            matTooltip="*Confirm Password should match from the Password"
+                                            matTooltipPosition="right">
+                                        <mat-hint align="end">Re-enter password</mat-hint>
+                                        <mat-error *ngIf="!signupForm.controls.confirmPassword.valid && signupForm.controls.confirmPassword.pristine">Confirm password is required</mat-error>
+                                    </mat-form-field>
+                                </mat-card-content>
+                                <mat-card-actions align="center">
+                                    <button type="button" mat-raised-button color="warn" [disabled]="!signupForm.valid" (click)="signup()">Signup</button>
+                                </mat-card-actions>
+                            </form> 
+                        </mat-card> 
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" [rowHeight]="70">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <!--Offset-->
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+</div>
+

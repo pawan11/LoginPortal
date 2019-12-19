@@ -1,0 +1,69 @@
+<mat-toolbar style="height: 40px;" color="primary" > 
+    <span>Customer Portal</span>
+    <div class="spacer"></div>
+    <mat-icon *ngIf="connectionFlag" class="fa fa-sign-out" matTooltip="Logout"  matTooltipPosition="below" style="cursor:pointer" (click)="logout()"></mat-icon>
+</mat-toolbar>
+
+<div class="container-fluid bgColor">
+    <div>
+        <!--Offset-->
+    </div>
+    <div class="grid-container">
+            <mat-grid-list cols="3" [rowHeight]="600">
+                <mat-card *ngIf="connectionFlag">
+                    <mat-card-title>Customer Details
+                            <a *ngIf="!editFlag" style="float:right; cursor:pointer" matTooltip="Edit"  matTooltipPosition="below" (click)="editButtonTrigger()"><mat-icon><i class="fa fa-edit" style="font-size: inherit"></i></mat-icon></a> 
+                    </mat-card-title>
+                   
+                    <div class="image-box">
+                        <img [src]="imageUrl" class="img-responsive center-block" alt="Image Not Found">
+                    </div>
+                    <form  *ngIf="dataFlag" [formGroup]="editForm"  autocomplete="off" novalidate  fxLayout="column wrap"
+                    fxLayoutAlign="center">
+                        <mat-card-content align="center">
+                            <mat-form-field align="center">
+                                <input matInput type="text" [readonly]="!editFlag" placeholder="Customer Name" formControlName="custName" id="custName">
+                                <mat-hint align="end">Customer Name</mat-hint>
+                                <mat-error *ngIf="!editForm.controls.custName.valid && editForm.controls.custName.pristine">First Name is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  align="center">
+                                <input matInput type="email" [readonly]="true" placeholder="Username" formControlName="username" id="username">
+                                <mat-hint align="end">Email ID</mat-hint>
+                                <mat-error *ngIf="!editForm.controls.username.valid && editForm.controls.username.pristine">Username is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field >
+                                <!--[ngModel]="empReg.itCareerStartDate | date:'yyyy-MM-dd'"-->
+                                <input matInput [readonly]="!editFlag" [matDatepicker]="dateOfBirth" placeholder="Date of Birth" formControlName="dateOfBirth" id="dateOfBirth" 
+                                         (click)="dateOfBirth.open()" [ngModel]="customer.dateOfBirth | date:'yyyy-MM-dd'">
+                                <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                                <mat-datepicker  #dateOfBirth></mat-datepicker>
+                                <mat-hint align="end">Date of birth (mm/dd/yyyy)</mat-hint>
+                                <mat-error *ngIf="!editForm.controls.dateOfBirth.valid && editForm.controls.dateOfBirth.pristine">Date of birth is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field align="center">
+                                <input matInput type="number" [readonly]="!editFlag" placeholder="Mobile Number" formControlName="mobileNumber" id="mobileNumber">
+                                <mat-hint align="end">Mobile Number</mat-hint>
+                                <mat-error *ngIf="!editForm.controls.mobileNumber.valid && editForm.controls.mobileNumber.pristine">Mobile Number is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field align="center">
+                                    <input matInput type="text" [readonly]="!editFlag" placeholder="Location" formControlName="location" id="location">
+                                    <mat-hint align="end">Location</mat-hint>
+                                    <mat-error *ngIf="!editForm.controls.location.valid && editForm.controls.location.pristine">Location is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field align="center">
+                                    <input matInput type="text" [readonly]="!editFlag" placeholder="Team Name" formControlName="teamName" id="teamName">
+                                    <mat-hint align="end">Team Name</mat-hint>
+                                    <mat-error *ngIf="!editForm.controls.teamName.valid && editForm.controls.teamName.pristine">Team is required</mat-error>
+                            </mat-form-field>
+                        </mat-card-content>
+                        <mat-card-actions align="center">
+                            <button type="button" *ngIf="editFlag" mat-raised-button color="primary" [disabled]="!editForm.valid" (click)="update()">Update</button>
+                            <button type="button" *ngIf="editFlag" mat-raised-button color="warn" [disabled]="!editForm.valid" (click)="disable()">Delete</button>
+                        </mat-card-actions>
+                    </form>         
+                </mat-card>
+            </mat-grid-list>
+    </div>
+</div>
+
+
